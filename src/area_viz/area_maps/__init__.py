@@ -1,19 +1,26 @@
-import area_maps.cities as cities
-import area_maps.plz_coords as plz_coords
-import area_maps.plz2_shape as plz2_shape
-import area_maps.plz3_shape as plz3_shape
-import area_maps.area_shape as area_shape
-import datamodel.poi as poi
-import corporate_design as ci
+import area_viz.area_maps.cities as cities
+import area_viz.area_maps.plz_coords as plz_coords
+import area_viz.area_maps.plz2_shape as plz2_shape
+import area_viz.area_maps.plz3_shape as plz3_shape
+import area_viz.area_maps.area_shape as area_shape
+import area_viz.datamodel.poi as poi
+import area_viz.corporate_design as ci
 
-ENFORCE_NEW_CREATION = False
+import dotenv
+import os
 
-PLZ_SHAPE_FILE = "data/PLZ_Gebiete/OSM_PLZ.shp"
-PLZ_COORDS_FILE = "data/PLZ_Gebiete/PLZ_Coords.json"
-PLZ_2DIGITS_SHAPE_FILE = "data/PLZ_Gebiete/OSM_PLZ_2digits.shp"
-PLZ_3DIGITS_SHAPE_FILE = "data/PLZ_Gebiete/OSM_PLZ_3digits.shp"
-GEBIETE_SHAPE_FILE = "data/PLZ_Gebiete/OSM_Gebiete.shp"
-CAPITAL_CITIES_URL = "data/city_data/Hauptstädte der deutschen Bundesländer (PLZ, Hauptstadt).csv"
+dotenv.load_dotenv()  # Load environment variables from .env file
+
+LARGE_DATA_FOLDER = os.getenv('AV_LARGE_DATA_FOLDER', 'large_data')
+
+ENFORCE_NEW_CREATION = os.getenv('AV_ENFORCE_NEW_CREATION', 'False').lower() in ('true', '1', 't')
+
+PLZ_SHAPE_FILE = os.path.join(LARGE_DATA_FOLDER, "PLZ_Gebiete/OSM_PLZ.shp")
+PLZ_COORDS_FILE = os.path.join(LARGE_DATA_FOLDER, "PLZ_Gebiete/PLZ_Coords.json")
+PLZ_2DIGITS_SHAPE_FILE = os.path.join(LARGE_DATA_FOLDER, "PLZ_Gebiete/OSM_PLZ_2digits.shp")
+PLZ_3DIGITS_SHAPE_FILE = os.path.join(LARGE_DATA_FOLDER, "PLZ_Gebiete/OSM_PLZ_3digits.shp")
+GEBIETE_SHAPE_FILE = os.path.join(LARGE_DATA_FOLDER, "PLZ_Gebiete/OSM_Gebiete.shp")
+CAPITAL_CITIES_URL = os.path.join(LARGE_DATA_FOLDER, "city_data/Hauptstädte der deutschen Bundesländer (PLZ, Hauptstadt).csv")
 
 
 AREA_MAPPING = {

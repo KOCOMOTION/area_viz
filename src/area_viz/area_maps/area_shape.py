@@ -1,7 +1,6 @@
 import geopandas as gpd
 import os
 
-
 def create_shape_file(output_file_path: str, plz2_file: str) -> None:
     plz2 = gpd.read_file(plz2_file)
     gebiete = plz2.copy()

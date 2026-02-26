@@ -1,5 +1,5 @@
-import datamodel.poi as dm_poi
-import area_maps as am
+import area_viz.datamodel.poi as dm_poi
+import area_viz.area_maps as am
 import pandas as pd
 import random
 

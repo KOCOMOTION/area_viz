@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import datamodel.poi as dm_poi
+import area_viz.datamodel.poi as dm_poi
 
 def add_poi_to_map(ax: plt.Axes, poi_list: list[dm_poi.POI], kwargs_scatter: dict = {}, kwargs_annotate: dict = {}) -> plt.Axes:
     for poi in poi_list:

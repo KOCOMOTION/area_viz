@@ -1,6 +1,6 @@
 import geopandas as gpd
-import datamodel.poi as poi
-import corporate_design as ci
+import area_viz.datamodel.poi as poi
+import area_viz.corporate_design as ci
 import dataclasses as dc
 import json
 import os

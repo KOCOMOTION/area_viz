@@ -17,3 +17,4 @@ uv.lock
 
 # KOCO private data
 src/area_viz/data/firmen/
+.env

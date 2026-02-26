@@ -1,5 +1,5 @@
-import area_maps as am
-import datamodel.poi as poi
+import area_viz.area_maps as am
+import area_viz.datamodel.poi as poi
 import dataclasses as dc
 
 @dc.dataclass

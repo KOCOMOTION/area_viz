@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import corporate_design as ci
-import area_maps as am
-import plot_data.generic as generic
+import area_viz.corporate_design as ci
+import area_viz.area_maps as am
+import area_viz.plot_data.generic as generic
 
 def plz2_area(
         plz2_data: pd.DataFrame,

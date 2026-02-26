@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
-import plot_data.sales_areas as sales_areas
-import plot_data.generic as generic
-import plot_data.heatmap as heatmap
-import datamodel.poi as dm_poi
+import area_viz.plot_data.sales_areas as sales_areas
+import area_viz.plot_data.generic as generic
+import area_viz.plot_data.heatmap as heatmap
+import area_viz.datamodel.poi as dm_poi
 
-import corporate_design as ci
-import area_maps as am
+import area_viz.corporate_design as ci
+import area_viz.area_maps as am
 import pandas as pd
 
 

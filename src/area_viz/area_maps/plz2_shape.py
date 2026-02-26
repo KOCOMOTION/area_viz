@@ -1,5 +1,5 @@
 import geopandas as gpd
-import corporate_design as ci
+import area_viz.corporate_design as ci
 import os
 
 def map_plz_areas(plz2: str, area_mapping: dict) -> str:

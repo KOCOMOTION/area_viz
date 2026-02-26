@@ -7,7 +7,11 @@ authors = [
     { name = "Gerrit Kocherscheidt", email = "kochersg@koco-group.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "dotenv>=0.9.9",
+    "geopandas>=1.1.2",
+    "matplotlib>=3.10.8",
+]
 
 [project.scripts]
 area-viz = "area_viz:main"

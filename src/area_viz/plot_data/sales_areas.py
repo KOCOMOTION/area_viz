@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-import corporate_design as ci
-import plot_data.generic as generic
-import area_maps as am
+import area_viz.corporate_design as ci
+import area_viz.plot_data.generic as generic
+import area_viz.area_maps as am
 
 def basic_map(
         ax: plt.Axes|None, 
