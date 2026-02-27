@@ -15,9 +15,9 @@ def fetch_rand_coordinates(area: str = "Deutschland") -> tuple[float, float]:
 
 def poi_list(
         n_pois: int = 10, 
-        min_value: int = 0, 
-        max_value: int = 100, 
-        scale_values: int = 1,
+        min_value: float = 0, 
+        max_value: float = 100, 
+        scale_values: float = 1,
         marker: str = 'o', 
         color: str = 'blue',
         hide_annotations: bool = False,
@@ -31,7 +31,7 @@ def poi_list(
             coordinates=rand_coords,
             marker=marker,
             color=color,
-            size=random.randint(min_value, max_value) * scale_values
+            size=random.uniform(min_value, max_value) * scale_values
         )
         if hide_annotations:
             poi.name = ""
@@ -40,12 +40,12 @@ def poi_list(
 
 def plz2_area_values(
         area_name: str,
-        min_value: int = 0,
-        max_value: int = 100,
-        scale_values: int = 1
+        min_value: float = 0,
+        max_value: float = 100,
+        scale_values: float = 1
 ) -> pd.DataFrame:
     df = am.PLZ2_SHAPES[am.PLZ2_SHAPES["gebiet"] == area_name][["plz2"]].copy()
-    df["value"] = df["plz2"].apply(lambda x: random.randint(min_value, max_value) * scale_values)
+    df["value"] = df["plz2"].apply(lambda x: random.uniform(min_value, max_value) * scale_values)
     df.rename(columns={"plz2": "PLZ"}, inplace=True)
     df.set_index("PLZ", inplace=True)
     df = df.groupby(df.index)["value"].sum()  # Sum values for duplicate PLZ-2 areas
@@ -53,12 +53,12 @@ def plz2_area_values(
 
 def plz3_area_values(
         area_name: str,
-        min_value: int = 0,
-        max_value: int = 100,
-        scale_values: int = 1
+        min_value: float = 0,
+        max_value: float = 100,
+        scale_values: float = 1
 ) -> pd.DataFrame:
     df = am.PLZ3_SHAPES[am.PLZ3_SHAPES["gebiet"] == area_name][["plz3"]].copy()
-    df["value"] = df["plz3"].apply(lambda x: random.randint(min_value, max_value) * scale_values)
+    df["value"] = df["plz3"].apply(lambda x: random.uniform(min_value, max_value) * scale_values)
     df.rename(columns={"plz3": "PLZ"}, inplace=True)
     df.set_index("PLZ", inplace=True)
     df = df.groupby(df.index)["value"].sum()  # Sum values for duplicate PLZ-2 areas

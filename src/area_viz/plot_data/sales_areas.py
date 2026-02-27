@@ -69,14 +69,14 @@ def basic_map_area(
     ax.set_ylim(ylim)
     return ax
 
-def germany_sales_areas() -> plt.axes:
+def germany_sales_areas() -> plt.Axes:
     fig = plt.figure(figsize=(10, 15))
     ax = fig.add_subplot(1, 1, 1)
 
     ax=basic_map(
         ax=ax, 
         show_plz2=True, 
-        show_area_shape=True, 
+        show_area_shape=True,
         show_HQ=True, 
         show_sales_offices=True, 
         show_capital_cities=True
@@ -84,7 +84,7 @@ def germany_sales_areas() -> plt.axes:
     return ax
 
 
-def germany_sales_area(area_name: str) -> plt.axes:
+def germany_sales_area(area_name: str) -> plt.Axes:
     fig = plt.figure(figsize=(10, 15))
     ax = fig.add_subplot(1, 1, 1)
 

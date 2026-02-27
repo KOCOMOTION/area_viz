@@ -1,6 +1,6 @@
 [project]
 name = "area-viz"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -12,9 +12,14 @@ dependencies = [
     "geopandas>=1.1.2",
     "matplotlib>=3.10.8",
 ]
+license = "MIT"
+license-files = ["LICENSE"]
 
 [project.scripts]
 area-viz = "area_viz:main"
+
+[project.urls]
+Homepage = "https://github.com/KOCOMOTION/area_viz"
 
 [build-system]
 requires = ["uv_build>=0.10.4,<0.11.0"]

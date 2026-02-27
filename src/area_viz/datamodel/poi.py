@@ -7,7 +7,7 @@ class POI:
     coordinates: tuple[float, float]
     marker: str = 's'
     color: str = 'k'
-    size: int = 10
+    size: float = 10.0
     
 def fetch_poi_from_poi_list(poi_list: list[POI], name: str) -> POI:
     for poi in poi_list:
@@ -15,7 +15,7 @@ def fetch_poi_from_poi_list(poi_list: list[POI], name: str) -> POI:
             return poi
     return None 
 
-def calc_scale_factor(df: pd.DataFrame, size_col: str, min_size: int = 10, max_size: int = 300) -> float:
+def calc_scale_factor(df: pd.DataFrame, size_col: str, min_size: float = 10.0, max_size: float = 300.0) -> float:
     min_value = df[size_col].min()
     max_value = df[size_col].max()
     if max_value == min_value:

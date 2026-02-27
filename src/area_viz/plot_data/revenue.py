@@ -39,13 +39,15 @@ def top_companies_revenue_area(
 
 
 def plz2_heatmap(
+        ax: plt.Axes,
         plz2_data: pd.DataFrame,
         area: str = "Deutschland",
         show_HQ: bool = True,
         show_sales_offices: bool = True,
         show_capital_cities: bool = True,
-) -> plt.axes:
+) -> plt.Axes:
     heatmap_ax = heatmap.plz2_area(
+        ax=ax,
         plz2_data=plz2_data,
         area=area,
         show_HQ=show_HQ,
@@ -55,13 +57,15 @@ def plz2_heatmap(
     return heatmap_ax
 
 def plz3_heatmap(
+        ax: plt.Axes,
         plz3_data: pd.DataFrame,
         area: str = "Deutschland",
         show_HQ: bool = True,
         show_sales_offices: bool = True,
         show_capital_cities: bool = True,
-) -> plt.axes:
+) -> plt.Axes:
     heatmap_ax = heatmap.plz3_area(
+        ax=ax,
         plz3_data=plz3_data,
         area=area,
         show_HQ=show_HQ,
