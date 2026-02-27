@@ -10,8 +10,8 @@ def main():
 
     d=gen_test_data.plz2_area_values(area_name="Bayern")
     ax=pd_heatmap.plz2_area(ax=None, plz2_data=d, area="Bayern", show_HQ=True, show_sales_offices=True, show_capital_cities=True)
-    ax.set_title("PLZ-2 Heatmap für Bayern")
-    plt.show()
+    # ax.set_title("PLZ-2 Heatmap für Bayern")
+    # plt.show()
 
 
 if __name__ == "__main__":

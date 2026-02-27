@@ -20,6 +20,7 @@ def plz2_area(
     if area != "Deutschland":
         plz2_gdf = plz2_gdf[plz2_gdf["gebiet"].str.lower().str.contains(area.lower())]
     plz2_gdf["value"] = plz2_gdf["plz2"].map(plz2_data)
+    plz2_gdf["value"] = plz2_gdf["value"].fillna(0)  # Optional: Fill NaN values with 0 for better visualization
     plz2_gdf.plot(column="value", ax=ax, legend=True, cmap="OrRd", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
@@ -39,6 +40,7 @@ def plz2_area(
         plt.figtext(0.5, 0.01, caption, ha="center", fontsize=10)
     ax.set_xlim(xlim)
     ax.set_ylim(ylim)
+    plt.show()
     return ax
 
 def plz3_area(
@@ -57,8 +59,8 @@ def plz3_area(
     if area != "Deutschland":
         plz3_gdf = plz3_gdf[plz3_gdf["gebiet"].str.lower().str.contains(area.lower())]
     plz3_gdf["value"] = plz3_gdf["plz3"].map(plz3_data)
-    # plz3_gdf["value"] = plz3_gdf["value"].fillna(0)  # Optional: Fill NaN values with 0 for better visualization
-    plz3_gdf.plot(column="value", ax=ax, legend=True, cmap="Reds", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
+    plz3_gdf["value"] = plz3_gdf["value"].fillna(0)  # Optional: Fill NaN values with 0 for better visualization
+    plz3_gdf.shape.plot(column="value", ax=ax, legend=True, cmap="Reds", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
     ax=am.AREA_SHAPES.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
