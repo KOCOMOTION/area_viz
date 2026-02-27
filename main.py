@@ -19,7 +19,7 @@ def main():
         show_sales_offices=True, 
         show_capital_cities=True,
         caption="Test Heatmap PLZ2 Bayern")
-    plt.show()
+    plt.savefig("test_heatmap_plz2_bayern.png", bbox_inches='tight', dpi=300)
 
 
 if __name__ == "__main__":
