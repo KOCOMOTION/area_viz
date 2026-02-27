@@ -11,8 +11,11 @@ def basic_map(
         show_sales_offices: bool = True, 
         show_capital_cities: bool = True
     )->plt.Axes:
+    if not ax:
+        fig = plt.figure(figsize=(15, 10), dpi=200)
+        ax = fig.add_subplot(1, 1, 1)
     if show_plz2:
-        ax=am.PLZ2_SHAPES.plot(ax=ax, legend=False, figsize=(10, 10), edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=am.PLZ2_SHAPES['color'], alpha=0.3)
+        ax=am.PLZ2_SHAPES.plot(ax=ax, legend=False, edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=am.PLZ2_SHAPES['color'], alpha=0.3)
         am.PLZ2_SHAPES.apply(lambda x: ax.annotate(text=x["plz2"], xy=x.geometry.centroid.coords[0], ha="center", fontsize=5, color=ci.KOCO_COLORS.get("Grau")), axis=1)
 
     if show_area_shape:
@@ -41,6 +44,9 @@ def basic_map_area(
         show_sales_offices: bool = True, 
         show_capital_cities: bool = True
     )->plt.Axes:
+    if not ax:
+        fig = plt.figure(figsize=(15, 10), dpi=200)
+        ax = fig.add_subplot(1, 1, 1)
     if show_plz2:
         plz2_area = am.PLZ2_SHAPES.where(am.PLZ2_SHAPES["gebiet"] == area_name).dropna(subset=["geometry"])
         ax=plz2_area.plot(ax=ax, legend=False, figsize=(10, 10), edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=plz2_area['color'], alpha=0.3)

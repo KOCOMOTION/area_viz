@@ -14,7 +14,7 @@ def plz2_area(
         caption: str = None
 ) -> plt.Axes:
     if not ax:
-        fig=plt.figure(figsize=(20, 12), dpi=600)
+        fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
     plz2_gdf = am.PLZ2_SHAPES.copy()
     if area != "Deutschland":
@@ -40,7 +40,6 @@ def plz2_area(
         plt.figtext(0.5, 0.01, caption, ha="center", fontsize=10)
     ax.set_xlim(xlim)
     ax.set_ylim(ylim)
-    plt.show()
     return ax
 
 def plz3_area(
@@ -53,7 +52,7 @@ def plz3_area(
         caption: str = None
 ) -> plt.Axes:
     if not ax:
-        fig=plt.figure(figsize=(10, 15))
+        fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
     plz3_gdf = am.PLZ3_SHAPES.copy()
     if area != "Deutschland":
