@@ -11,7 +11,7 @@ def basic_map(
         show_sales_offices: bool = True, 
         show_capital_cities: bool = True
     )->plt.Axes:
-    if not ax:
+    if ax == None:
         fig = plt.figure(figsize=(15, 10), dpi=200)
         ax = fig.add_subplot(1, 1, 1)
     if show_plz2:
@@ -44,7 +44,7 @@ def basic_map_area(
         show_sales_offices: bool = True, 
         show_capital_cities: bool = True
     )->plt.Axes:
-    if not ax:
+    if ax == None:
         fig = plt.figure(figsize=(15, 10), dpi=200)
         ax = fig.add_subplot(1, 1, 1)
     if show_plz2:

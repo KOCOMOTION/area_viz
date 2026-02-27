@@ -13,7 +13,7 @@ def plz2_area(
         show_capital_cities: bool = True,
         caption: str = None
 ) -> plt.Axes:
-    if not ax:
+    if ax == None:
         fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
     plz2_gdf = am.PLZ2_SHAPES.copy()
@@ -51,7 +51,7 @@ def plz3_area(
         show_capital_cities: bool = True,
         caption: str = None
 ) -> plt.Axes:
-    if not ax:
+    if ax == None:
         fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
     plz3_gdf = am.PLZ3_SHAPES.copy()
