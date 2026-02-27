@@ -59,7 +59,7 @@ def plz3_area(
         plz3_gdf = plz3_gdf[plz3_gdf["gebiet"].str.lower().str.contains(area.lower())]
     plz3_gdf["value"] = plz3_gdf["plz3"].map(plz3_data)
     plz3_gdf["value"] = plz3_gdf["value"].fillna(0)  # Optional: Fill NaN values with 0 for better visualization
-    plz3_gdf.shape.plot(column="value", ax=ax, legend=True, cmap="Reds", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
+    plz3_gdf.plot(column="value", ax=ax, legend=True, cmap="Reds", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
     ax=am.AREA_SHAPES.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
