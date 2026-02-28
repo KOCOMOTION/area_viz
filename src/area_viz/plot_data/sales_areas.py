@@ -15,12 +15,14 @@ def basic_map(
         fig = plt.figure(figsize=(15, 10), dpi=200)
         ax = fig.add_subplot(1, 1, 1)
     if show_plz2:
-        ax=am.PLZ2_SHAPES.plot(ax=ax, legend=False, edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=am.PLZ2_SHAPES['color'], alpha=0.3)
-        am.PLZ2_SHAPES.apply(lambda x: ax.annotate(text=x["plz2"], xy=x.geometry.centroid.coords[0], ha="center", fontsize=5, color=ci.KOCO_COLORS.get("Grau")), axis=1)
+        plz2_shapes = am.get_plz2_shapes()
+        ax=plz2_shapes.plot(ax=ax, legend=False, edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=plz2_shapes['color'], alpha=0.3)
+        plz2_shapes.apply(lambda x: ax.annotate(text=x["plz2"], xy=x.geometry.centroid.coords[0], ha="center", fontsize=5, color=ci.KOCO_COLORS.get("Grau")), axis=1)
 
     if show_area_shape:
-        ax=am.AREA_SHAPES.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
-        am.AREA_SHAPES.apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
+        area_shapes = am.get_area_shapes()
+        ax=area_shapes.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
+        area_shapes.apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
     ax.axes.set_axis_off()
     if ax is None:
         return None
@@ -48,12 +50,14 @@ def basic_map_area(
         fig = plt.figure(figsize=(15, 10), dpi=200)
         ax = fig.add_subplot(1, 1, 1)
     if show_plz2:
-        plz2_area = am.PLZ2_SHAPES.where(am.PLZ2_SHAPES["gebiet"] == area_name).dropna(subset=["geometry"])
+        plz2_shapes = am.get_plz2_shapes()
+        plz2_area = plz2_shapes.where(plz2_shapes["gebiet"] == area_name).dropna(subset=["geometry"])
         ax=plz2_area.plot(ax=ax, legend=False, figsize=(10, 10), edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3, color=plz2_area['color'], alpha=0.3)
         plz2_area.apply(lambda x: ax.annotate(text=x["plz2"], xy=x.geometry.centroid.coords[0], ha="center", fontsize=5, color=ci.KOCO_COLORS.get("Grau")), axis=1)
 
     if show_area_shape:
-        area_shape = am.AREA_SHAPES.where(am.AREA_SHAPES["gebiet"] == area_name).dropna(subset=["geometry"])
+        area_shapes = am.get_area_shapes()
+        area_shape = area_shapes.where(area_shapes["gebiet"] == area_name).dropna(subset=["geometry"])
         ax=area_shape.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
         area_shape.apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
     ax.axes.set_axis_off()

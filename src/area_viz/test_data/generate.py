@@ -44,7 +44,10 @@ def plz2_area_values(
         max_value: float = 100,
         scale_values: float = 1
 ) -> pd.DataFrame:
-    df = am.PLZ2_SHAPES[am.PLZ2_SHAPES["gebiet"] == area_name][["plz2"]].copy()
+    if area_name == "Deutschland":
+        df = am.PLZ2_SHAPES[["plz2"]].copy()
+    else:
+        df = am.PLZ2_SHAPES[am.PLZ2_SHAPES["gebiet"] == area_name][["plz2"]].copy()
     df["value"] = df["plz2"].apply(lambda x: random.uniform(min_value, max_value) * scale_values)
     df.rename(columns={"plz2": "PLZ"}, inplace=True)
     df.set_index("PLZ", inplace=True)
@@ -57,7 +60,10 @@ def plz3_area_values(
         max_value: float = 100,
         scale_values: float = 1
 ) -> pd.DataFrame:
-    df = am.PLZ3_SHAPES[am.PLZ3_SHAPES["gebiet"] == area_name][["plz3"]].copy()
+    if area_name == "Deutschland":
+        df = am.PLZ3_SHAPES[["plz3"]].copy()
+    else:
+        df = am.PLZ3_SHAPES[am.PLZ3_SHAPES["gebiet"] == area_name][["plz3"]].copy()
     df["value"] = df["plz3"].apply(lambda x: random.uniform(min_value, max_value) * scale_values)
     df.rename(columns={"plz3": "PLZ"}, inplace=True)
     df.set_index("PLZ", inplace=True)

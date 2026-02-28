@@ -16,7 +16,7 @@ def plz2_area(
     if ax == None:
         fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
-    plz2_gdf = am.PLZ2_SHAPES.copy()
+    plz2_gdf = am.get_plz2_shapes()
     if area != "Deutschland":
         plz2_gdf = plz2_gdf[plz2_gdf["gebiet"].str.lower().str.contains(area.lower())]
     plz2_gdf["value"] = plz2_gdf["plz2"].map(plz2_data)
@@ -24,8 +24,8 @@ def plz2_area(
     plz2_gdf.plot(column="value", ax=ax, legend=True, cmap="OrRd", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
-    ax=am.AREA_SHAPES.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
-    am.AREA_SHAPES.apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
+    ax=am.get_area_shapes().boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
+    am.get_area_shapes().apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
     ax.axes.set_axis_off()
 
     if show_HQ:
@@ -54,7 +54,7 @@ def plz3_area(
     if ax == None:
         fig=plt.figure(figsize=(10, 5), dpi=200)
         ax=fig.add_subplot(1, 1, 1)
-    plz3_gdf = am.PLZ3_SHAPES.copy()
+    plz3_gdf = am.get_plz3_shapes()
     if area != "Deutschland":
         plz3_gdf = plz3_gdf[plz3_gdf["gebiet"].str.lower().str.contains(area.lower())]
     plz3_gdf["value"] = plz3_gdf["plz3"].map(plz3_data)
@@ -62,8 +62,8 @@ def plz3_area(
     plz3_gdf.plot(column="value", ax=ax, legend=True, cmap="Reds", edgecolor=ci.KOCO_COLORS.get("Grau"), linewidth=0.3)
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
-    ax=am.AREA_SHAPES.boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
-    am.AREA_SHAPES.apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
+    ax=am.get_area_shapes().boundary.plot(ax=ax, color=ci.KOCO_COLORS.get("HF_Blaugrau"), linewidth=1)
+    am.get_area_shapes().apply(lambda x: ax.annotate(text=x["gebiet"], xy=x.geometry.centroid.coords[0], ha="center", fontweight="bold", fontsize=10, color=ci.KOCO_COLORS.get("Grau")), axis=1)
 
     if show_HQ:
         generic.add_poi_to_map(ax, [am.HQ])

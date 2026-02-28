@@ -5,6 +5,8 @@ import area_viz.area_maps.plz3_shape as plz3_shape
 import area_viz.area_maps.area_shape as area_shape
 import area_viz.datamodel.poi as poi
 import area_viz.corporate_design as ci
+import geopandas as gpd
+import copy
 
 import dotenv
 import os
@@ -50,7 +52,7 @@ CAPITAL_CITIES = cities.load_capital_cities(capital_cities_url=CAPITAL_CITIES_UR
 HQ = poi.fetch_poi_from_poi_list(PLZ_COORDS, HQ_PLZ)
 HQ.name = "HQ"
 HQ.color = ci.KOCO_COLORS.get("HF_Orange")
-HQ.marker = "x"
+HQ.marker = "o"
 
 SALES_OFFICES = []
 for office_plz in SALES_OFFICES_PLZ:
@@ -58,9 +60,24 @@ for office_plz in SALES_OFFICES_PLZ:
     if office_coords:
         office_coords.name = f"Büro {office_plz}"
         office_coords.color = ci.KOCO_COLORS.get("HF_Lila")
-        office_coords.marker = "D"
+        office_coords.marker = "o"
         SALES_OFFICES.append(office_coords)
 
 PLZ2_SHAPES = plz2_shape.load_shape_file(input_file=PLZ_SHAPE_FILE, output_file=PLZ_2DIGITS_SHAPE_FILE, area_mapping=AREA_MAPPING, enforce_new_creation=ENFORCE_NEW_CREATION)
 PLZ3_SHAPES = plz3_shape.load_shape_file(input_file=PLZ_SHAPE_FILE, output_file=PLZ_3DIGITS_SHAPE_FILE, area_mapping=AREA_MAPPING, enforce_new_creation=ENFORCE_NEW_CREATION)   
 AREA_SHAPES = area_shape.load_shape_file(file_path=GEBIETE_SHAPE_FILE, plz2_file=PLZ_2DIGITS_SHAPE_FILE, enforce_new_creation=ENFORCE_NEW_CREATION)
+
+def get_area_shapes() -> gpd.GeoDataFrame:
+    return copy.deepcopy(AREA_SHAPES)
+
+def get_plz2_shapes() -> gpd.GeoDataFrame:
+    return copy.deepcopy(PLZ2_SHAPES)
+
+def get_plz3_shapes() -> gpd.GeoDataFrame:
+    return copy.deepcopy(PLZ3_SHAPES)
+
+def get_plz_coords() -> list[plz_coords.PLZCoord]:
+    return copy.deepcopy(PLZ_COORDS)
+
+
+
